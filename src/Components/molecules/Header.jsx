@@ -16,7 +16,7 @@ function Header() {
 
   return (
     <div className="w-full py-6 flex items-center justify-center bg-transparent relative z-50">
-      <div className="flex justify-between items-center w-full px-5 max-w-7xl">
+      <div className="flex justify-between items-center w-full px-5 ">
         {/* Logo Section */}
         <div className="h-full">
           <Link to="/">
@@ -25,7 +25,7 @@ function Header() {
         </div>
 
         {/* Navigation Links - Center */}
-        <nav className="hidden lg:flex items-center gap-x-8">
+        <nav className="hidden lg:flex items-center gap-x-8 lg:gap-x-12">
           {navLinks.map((link) => (
             <NavLink
               key={link.name}

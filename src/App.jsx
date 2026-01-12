@@ -11,7 +11,7 @@ function App() {
     return (
         <div className="w-full h-screen bg-mg-offwhite font-primary overflow-x-hidden">
             <Header />
-            <main className='relative pt-25'>
+            <main className='relative'>
                 {/* Main content of Each Page goes here */}
                 <Routes>
                     <Route path='/' element={<Home />} />
