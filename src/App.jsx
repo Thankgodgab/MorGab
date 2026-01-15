@@ -10,7 +10,7 @@ import { Route, Routes } from 'react-router-dom'
 
 function App() {
     return (
-        <div className="w-full h-screen bg-mg-offwhite font-primary overflow-x-hidden">
+        <div className="w-full min-h-screen bg-mg-offwhite font-primary overflow-x-hidden">
             <Header />
             <main className='relative'>
                 {/* Main content of Each Page goes here */}

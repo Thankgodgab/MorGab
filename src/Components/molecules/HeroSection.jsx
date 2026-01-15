@@ -11,7 +11,7 @@ import shape04 from '../../assets/h5_banner_shape04.png';
 
 function HeroSection() {
   return (
-    <div className="relative w-full py-25 px-5 md:px-10 lg:px-25 overflow-hidden bg-mg-offwhite z-0">
+    <div className="relative w-full pt-25 lg:pb-10 px-5 md:px-10 lg:px-25 overflow-hidden bg-mg-offwhite z-0">
 
       {/* Background Shapes */}
       {/* Top right squiggly line */}

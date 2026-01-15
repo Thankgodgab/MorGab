@@ -18,16 +18,16 @@ const Footer = () => {
 
   useEffect(() => {
     const checkScrollTop = () => {
-      if (!showScroll && window.pageYOffset > 400) {
+      if (window.scrollY > 100) {
         setShowScroll(true);
-      } else if (showScroll && window.pageYOffset <= 400) {
+      } else {
         setShowScroll(false);
       }
     };
 
     window.addEventListener('scroll', checkScrollTop);
     return () => window.removeEventListener('scroll', checkScrollTop);
-  }, [showScroll]);
+  }, []);
 
   const instagramPosts = [
     { id: 1, img: insta01, link: "https://www.instagram.com/p/1" },
