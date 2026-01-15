@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 
 // Import Assets
 import brand01 from '../../assets/brand_img01.png';
@@ -12,14 +13,20 @@ const PartnerSection = () => {
     const brands = [
         { id: 1, img: brand01, alt: "DoorDash" },
         { id: 2, img: brand02, alt: "Centric Software" },
-        { id: 3, img: brand03, alt: "Discord" },
         { id: 4, img: brand04, alt: "Airbnb" },
+        { id: 3, img: brand03, alt: "Discord" },
         { id: 5, img: brand05, alt: "Norton" },
         { id: 6, img: brand06, alt: "Nature Wave" },
     ];
 
     return (
-        <div className="bg-[#0b0f7a] py-12 overflow-hidden">
+        <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="bg-[#0b0f7a] py-12 overflow-hidden"
+        >
             <div className="container mx-auto px-4">
                 <div className="flex items-center gap-16 animate-scroll w-max hover:[animation-play-state:paused]">
                     {/* Double the brands to create seamless loop */}
@@ -37,8 +44,9 @@ const PartnerSection = () => {
                     ))}
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
 export default PartnerSection;
+

@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaAsterisk } from 'react-icons/fa';
+import { motion } from 'motion/react';
 
 const ServiceTicker = () => {
     const services = [
@@ -13,7 +14,13 @@ const ServiceTicker = () => {
     ];
 
     return (
-        <div className="bg-white py-10 overflow-hidden border-y border-gray-100">
+        <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="bg-white py-10 overflow-hidden border-y border-gray-100"
+        >
             <div className="flex items-center gap-10 animate-scroll w-max">
                 {/* Double the services to create seamless loop */}
                 {[...services, ...services, ...services].map((service, index) => (
@@ -25,8 +32,9 @@ const ServiceTicker = () => {
                     </div>
                 ))}
             </div>
-        </div>
+        </motion.div>
     );
 };
 
 export default ServiceTicker;
+

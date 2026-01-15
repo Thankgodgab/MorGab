@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TestimonialCard from '../organisms/TestimonialCard';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'motion/react';
 
 // Import Assets (using team images as placeholders for avatars)
 import avatar01 from '../../assets/team_img01.jpg';
@@ -93,7 +94,13 @@ const Testimonies = () => {
         <section className="py-24 bg-[#f9fafb] font-secondary overflow-hidden">
             <div className="container mx-auto px-4">
                 {/* Header Section */}
-                <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-16 px-4">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6 }}
+                    className="flex flex-col md:flex-row items-end justify-between gap-8 mb-16 px-4"
+                >
                     <div className="max-w-2xl">
                         <span className="text-mg-yellow font-bold uppercase tracking-wider text-sm mb-4 block">
                             WHAT CLIENT SAY
@@ -118,11 +125,15 @@ const Testimonies = () => {
                             <FaArrowRight className="group-hover:scale-110 transition-transform" />
                         </button>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Slider Container */}
                 <div className="relative">
-                    <div
+                    <motion.div
+                        initial={{ opacity: 0, x: 100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                         className="flex transition-transform duration-500 ease-in-out"
                         style={{ transform: `translateX(-${currentIndex * (isMobile ? 100 : 50)}%)` }}
                     >
@@ -134,7 +145,7 @@ const Testimonies = () => {
                                 <TestimonialCard {...item} />
                             </div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebookF, FaTwitter, FaInstagram, FaPinterestP, FaYoutube, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaChevronUp } from 'react-icons/fa';
 import Button from '../organisms/Button';
+import { motion } from 'motion/react';
 
 // Import Assets
 import logoLight from '../../assets/LogoLight-L.png';
@@ -42,6 +43,25 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  };
+
   return (
     <>
       <footer className="bg-[#0b0f1a] text-mg-offwhite pt-20 pb-10 font-secondary relative overflow-hidden">
@@ -51,9 +71,15 @@ const Footer = () => {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20"
+          >
             {/* Column 1: Logo & Info */}
-            <div className="space-y-6">
+            <motion.div variants={itemVariants} className="space-y-6">
               <Link to="/" className="inline-block">
                 <img src={logoLight} alt="APexa Logo" className="h-10 w-auto" />
               </Link>
@@ -88,10 +114,10 @@ const Footer = () => {
                   </a>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Column 2: Information */}
-            <div>
+            <motion.div variants={itemVariants}>
               <h4 className="text-xl font-bold mb-8 relative inline-block">
                 Information
                 <span className="absolute -bottom-2 left-0 w-12 h-1 bg-mg-yellow"></span>
@@ -106,10 +132,10 @@ const Footer = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
 
             {/* Column 3: Top Links */}
-            <div>
+            <motion.div variants={itemVariants}>
               <h4 className="text-xl font-bold mb-8 relative inline-block">
                 Top Links
                 <span className="absolute -bottom-2 left-0 w-12 h-1 bg-mg-yellow"></span>
@@ -124,10 +150,10 @@ const Footer = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
 
             {/* Column 4: Instagram Posts */}
-            <div>
+            <motion.div variants={itemVariants}>
               <h4 className="text-xl font-bold mb-8 relative inline-block">
                 Instagram Posts
                 <span className="absolute -bottom-2 left-0 w-12 h-1 bg-mg-yellow"></span>
@@ -148,11 +174,17 @@ const Footer = () => {
                   </a>
                 ))}
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Newsletter & Copyright Section */}
-          <div className="border-t border-gray-800 pt-10 mt-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="border-t border-gray-800 pt-10 mt-10"
+          >
             <div className="flex flex-col lg:flex-row items-center justify-between gap-10 mb-10">
               <div className="flex flex-col md:flex-row items-center gap-8 w-full">
                 <h3 className="text-2xl md:text-3xl font-bold whitespace-nowrap">Subscribe Newsletter</h3>
@@ -173,7 +205,7 @@ const Footer = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </footer>
 
@@ -192,3 +224,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

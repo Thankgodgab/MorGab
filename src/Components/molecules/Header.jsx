@@ -3,6 +3,7 @@ import logo from '../../assets/LogoDark-L.png'
 import { Link, NavLink } from 'react-router-dom'
 import { HiMenuAlt3 } from "react-icons/hi";
 import { RxCross2 } from "react-icons/rx";
+import { motion } from 'motion/react';
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -15,28 +16,39 @@ const navLinks = [
 // Components declared outside of the main Header component to avoid re-creation on every render
 const NavItems = () => (
   <nav className="hidden lg:flex items-center gap-x-8 lg:gap-x-12">
-    {navLinks.map((link) => (
-      <NavLink
+    {navLinks.map((link, index) => (
+      <motion.div
         key={link.name}
-        to={link.path}
-        className={({ isActive }) =>
-          `text-base font-semibold font-primary transition-colors duration-300 ease-in-out ${isActive ? 'text-mg-yellow' : 'text-mg-blue hover:text-mg-yellow'}`
-        }
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 * index }}
       >
-        {link.name}
-      </NavLink>
+        <NavLink
+          to={link.path}
+          className={({ isActive }) =>
+            `text-base font-semibold font-primary transition-colors duration-300 ease-in-out ${isActive ? 'text-mg-yellow' : 'text-mg-blue hover:text-mg-yellow'}`
+          }
+        >
+          {link.name}
+        </NavLink>
+      </motion.div>
     ))}
   </nav>
 )
 
 const ActionButtons = ({ setIsOpen }) => (
   <div className="flex items-center gap-x-6 justify-end">
-    <div className="hidden md:flex items-center gap-x-4">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, delay: 0.6 }}
+      className="hidden md:flex items-center gap-x-4"
+    >
       <button className="text-mg-blue hover:text-mg-offwhite px-7 py-3 bg-mg-yellow relative overflow-hidden group hover:bg-none transition-colors duration-500 rounded-lg shadow-md hover:shadow-lg cursor-pointer">
         <span className="absolute left-0 bottom-0 w-full h-full bg-mg-blue translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-0"></span>
         <span className='font-bold text-base relative z-10 uppercase'>LET'S TALK</span>
       </button>
-    </div>
+    </motion.div>
     <div className="lg:hidden">
       <button onClick={() => setIsOpen(true)} className="text-3xl text-mg-blue cursor-pointer focus:outline-none">
         <HiMenuAlt3 />
@@ -65,7 +77,12 @@ function Header() {
   return (
     <>
       {/* Main Header (Standard) */}
-      <header className="w-full py-6 flex items-center justify-center bg-transparent relative z-50">
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="w-full py-6 flex items-center justify-center bg-transparent relative z-50"
+      >
         <div className="flex justify-between items-center w-full px-5 md:px-10 lg:px-20">
           <div className="h-full">
             <Link to="/">
@@ -75,11 +92,11 @@ function Header() {
           <NavItems />
           <ActionButtons setIsOpen={setIsOpen} />
         </div>
-      </header>
+      </motion.header>
 
       {/* Sticky Header (Slides down) */}
       <header
-        className={`fixed top-0 left-0 w-full py-4 bg-white shadow-xl z-[9999] transition-all duration-500 transform ${isSticky ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+        className={`fixed top-0 left-0 w-full py-4 bg-white shadow-xl z-9999 transition-all duration-500 transform ${isSticky ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
           }`}
       >
         <div className="flex justify-between items-center w-full px-5 md:px-10 lg:px-20 container mx-auto">
@@ -137,4 +154,5 @@ function Header() {
   )
 }
 
-export default Header
+export default Header;
+

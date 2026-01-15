@@ -2,8 +2,7 @@ import React from 'react';
 import SectionHeader from '../organisms/SectionHeader';
 import ServiceCard from '../organisms/ServiceCard';
 import { FaBullhorn, FaChartLine, FaFileInvoiceDollar, FaChartPie } from "react-icons/fa6"; // Standard matching icons
-// You can replace these with image imports if specific assets are required later
-// import shapeImg from '../../assets/h5_choose_shape01.png';
+import { motion } from 'motion/react';
 
 const services = [
     {
@@ -37,8 +36,27 @@ const services = [
 ];
 
 function WhatWeOffer() {
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+            },
+        },
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.5 },
+        },
+    };
+
     return (
-        <section className="w-full py-20 px-5 md:px-10 lg:px-20 bg-white">
+        <section className="w-full py-20 px-5 md:px-10 lg:px-20 bg-white overflow-hidden">
             {/* 1. Heading Component */}
             <div className="mb-16">
                 <SectionHeader
@@ -49,19 +67,26 @@ function WhatWeOffer() {
             </div>
 
             {/* 2. Body - Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto"
+            >
                 {services.map((service) => (
-                    <ServiceCard
-                        key={service.id}
-                        icon={service.icon}
-                        title={service.title}
-                        description={service.description}
-                        btnText={service.btnText}
-                    />
+                    <motion.div key={service.id} variants={cardVariants}>
+                        <ServiceCard
+                            icon={service.icon}
+                            title={service.title}
+                            description={service.description}
+                            btnText={service.btnText}
+                        />
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </section>
-    )
+    );
 }
 
-export default WhatWeOffer
+export default WhatWeOffer;

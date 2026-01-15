@@ -1,5 +1,6 @@
 import React from 'react';
 import TeamCard from '../organisms/TeamCard';
+import { motion } from 'motion/react';
 
 // Import Assets
 import team01 from '../../assets/team_img01.jpg';
@@ -63,11 +64,36 @@ const TeamSection = () => {
         }
     ];
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+            },
+        },
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" },
+        },
+    };
+
     return (
-        <section className="py-24 bg-white font-secondary">
+        <section className="py-24 bg-white font-secondary overflow-hidden">
             <div className="container mx-auto px-4">
                 {/* Section Header */}
-                <div className="flex flex-col lg:flex-row items-end justify-between gap-8 mb-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6 }}
+                    className="flex flex-col lg:flex-row items-end justify-between gap-8 mb-16"
+                >
                     <div className="max-w-xl">
                         <span className="text-mg-yellow font-bold uppercase tracking-wider text-sm mb-4 block">
                             Meet Our Team
@@ -81,17 +107,24 @@ const TeamSection = () => {
                             Our power of choice is untrammelled and when nothing prevents being able to do what we like best every pleasure.
                         </p>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Team Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+                >
                     {teamMembers.map((member) => (
-                        <TeamCard
-                            key={member.id}
-                            {...member}
-                        />
+                        <motion.div key={member.id} variants={cardVariants}>
+                            <TeamCard
+                                {...member}
+                            />
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );
