@@ -128,23 +128,26 @@ const Testimonies = () => {
                 </motion.div>
 
                 {/* Slider Container */}
-                <div className="relative">
+                <div className="relative ">
                     <motion.div
-                        initial={{ opacity: 0, x: 100 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="flex transition-transform duration-500 ease-in-out"
-                        style={{ transform: `translateX(-${currentIndex * (isMobile ? 100 : 50)}%)` }}
                     >
-                        {testimonials.map((item) => (
-                            <div
-                                key={item.id}
-                                className="w-full lg:w-1/2 flex-shrink-0 px-4"
-                            >
-                                <TestimonialCard {...item} />
-                            </div>
-                        ))}
+                        <div
+                            className="flex transition-transform duration-500 ease-in-out"
+                            style={{ transform: `translateX(-${currentIndex * (isMobile ? 100 : 50)}%)` }}
+                        >
+                            {testimonials.map((item) => (
+                                <div
+                                    key={item.id}
+                                    className="w-full lg:w-1/2 shrink-0 px-4"
+                                >
+                                    <TestimonialCard {...item} />
+                                </div>
+                            ))}
+                        </div>
                     </motion.div>
                 </div>
             </div>
