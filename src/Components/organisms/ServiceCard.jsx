@@ -15,9 +15,9 @@ const ServiceCard = ({ icon: Icon, title, description, btnText }) => {
                     </svg>
                 </div>
                 {/* Icon */}
-                <div className="relative z-10 w-16 h-16 rounded-full bg-transparent backdrop-blur-sm flex items-center justify-center text-orange-400 shadow-sm transition-transform duration-500 group-hover:scale-110">
-                    {Icon && <Icon className="text-3xl" />}
-                </div>
+                
+                    {Icon && <Icon className="text-3xl text-mg-yellow z-10" />}
+                
             </div>
 
             {/* Content */}
