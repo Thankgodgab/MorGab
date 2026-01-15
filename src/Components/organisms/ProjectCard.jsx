@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ image, title, category, link = "#" }) => {
     return (
-        <div className="group relative w-full h-[450px] overflow-hidden rounded-xl cursor-pointer">
+        <div className="group relative w-full h-[450px] overflow-hidden cursor-pointer">
             {/* Background Image */}
             <img
                 src={image}

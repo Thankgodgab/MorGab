@@ -1,5 +1,6 @@
 import React from 'react';
 import ProjectCard from '../organisms/ProjectCard';
+import CounterSection from '../organisms/CounterSection';
 
 // Images
 import img1 from '../../assets/project01.jpg';
@@ -40,17 +41,23 @@ const projects = [
 
 function Project() {
   return (
-    <section className="w-full h-auto flex flex-col md:flex-row">
-      {projects.map((project) => (
-        <div key={project.id} className="w-full md:w-1/2 lg:w-1/4">
-          <ProjectCard
-            title={project.title}
-            category={project.category}
-            image={project.image}
-            link={project.link}
-          />
-        </div>
-      ))}
+    <section className="w-full h-auto">
+      {/* Project Cards Row */}
+      <div className="flex flex-col md:flex-row">
+        {projects.map((project) => (
+          <div key={project.id} className="w-full md:w-1/2 lg:w-1/4">
+            <ProjectCard
+              title={project.title}
+              category={project.category}
+              image={project.image}
+              link={project.link}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Counter Section Component */}
+      <CounterSection />
     </section>
   )
 }
