@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import logo from '../../assets/LogoDark-L.png'
-import { Link, NavLink } from 'react-router-dom'
 import { HiMenuAlt3 } from "react-icons/hi";
 import { RxCross2 } from "react-icons/rx";
 import { motion } from 'motion/react';
@@ -14,27 +13,33 @@ const navLinks = [
 ]
 
 // Components declared outside of the main Header component to avoid re-creation on every render
-const NavItems = () => (
-  <nav className="hidden lg:flex items-center gap-x-8 lg:gap-x-12">
-    {navLinks.map((link, index) => (
-      <motion.div
-        key={link.name}
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 * index }}
-      >
-        <NavLink
-          to={link.path}
-          className={({ isActive }) =>
-            `text-base font-semibold font-primary transition-colors duration-300 ease-in-out ${isActive ? 'text-mg-yellow' : 'text-mg-blue hover:text-mg-yellow'}`
-          }
-        >
-          {link.name}
-        </NavLink>
-      </motion.div>
-    ))}
-  </nav>
-)
+const NavItems = () => {
+  const currentPath = window.location.pathname;
+
+  return (
+    <nav className="hidden lg:flex items-center gap-x-8 lg:gap-x-12">
+      {navLinks.map((link, index) => {
+        const isActive = currentPath === link.path || (link.path !== '/' && currentPath.startsWith(link.path));
+
+        return (
+          <motion.div
+            key={link.name}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 * index }}
+          >
+            <a
+              href={link.path}
+              className={`text-base font-semibold font-primary transition-colors duration-300 ease-in-out ${isActive ? 'text-mg-yellow' : 'text-mg-blue hover:text-mg-yellow'}`}
+            >
+              {link.name}
+            </a>
+          </motion.div>
+        );
+      })}
+    </nav>
+  );
+}
 
 const ActionButtons = ({ setIsOpen }) => (
   <div className="flex items-center gap-x-6 justify-end">
@@ -60,6 +65,7 @@ const ActionButtons = ({ setIsOpen }) => (
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [isSticky, setIsSticky] = useState(false)
+  const currentPath = window.location.pathname;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -85,12 +91,13 @@ function Header() {
       >
         <div className="flex justify-between items-center w-full px-5 md:px-10 lg:px-20">
           <div className="h-full">
-            <Link to="/">
+            <a href="/">
               <img src={logo} alt="Company Logo" className='w-36 md:w-40 object-contain' />
-            </Link>
+            </a>
           </div>
           <NavItems />
           <ActionButtons setIsOpen={setIsOpen} />
+          
         </div>
       </motion.header>
 
@@ -101,9 +108,9 @@ function Header() {
       >
         <div className="flex justify-between items-center w-full px-5 md:px-10 lg:px-20 container mx-auto">
           <div className="h-full">
-            <Link to="/">
+            <a href="/">
               <img src={logo} alt="Company Logo" className='w-32 md:w-36 object-contain' />
-            </Link>
+            </a>
           </div>
           <NavItems />
           <ActionButtons setIsOpen={setIsOpen} />
@@ -112,34 +119,36 @@ function Header() {
 
       {/* Mobile Sidebar Overlay */}
       <div
-        className={`fixed inset-0 bg-mg-blue/80 z-[10000] transition-opacity duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed inset-0 bg-mg-blue/80 z-10000 transition-opacity duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
         onClick={() => setIsOpen(false)}
       />
 
       {/* Mobile Sidebar Content */}
-      <div className={`fixed top-0 right-0 w-full md:w-[80%] max-w-sm h-full bg-white z-[10001] shadow-2xl p-6 flex flex-col gap-y-8 transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed top-0 right-0 w-full md:w-[80%] max-w-sm h-full bg-white z-10001 shadow-2xl p-6 flex flex-col gap-y-8 transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex items-center justify-between">
-          <Link to="/" onClick={() => setIsOpen(false)}>
+          <a href="/" onClick={() => setIsOpen(false)}>
             <img src={logo} alt="Company Logo" className='w-32 object-contain' />
-          </Link>
+          </a>
           <button onClick={() => setIsOpen(false)} className="text-3xl text-mg-blue hover:text-mg-yellow transition-colors focus:outline-none">
             <RxCross2 />
           </button>
         </div>
 
         <nav className="flex flex-col gap-y-4">
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.name}
-              to={link.path}
-              onClick={() => setIsOpen(false)}
-              className={({ isActive }) =>
-                `text-lg font-medium font-primary transition-colors duration-300 ${isActive ? 'text-mg-yellow' : 'text-mg-blue hover:text-mg-yellow'}`
-              }
-            >
-              {link.name}
-            </NavLink>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = currentPath === link.path || (link.path !== '/' && currentPath.startsWith(link.path));
+
+            return (
+              <a
+                key={link.name}
+                href={link.path}
+                onClick={() => setIsOpen(false)}
+                className={`text-lg font-medium font-primary transition-colors duration-300 ${isActive ? 'text-mg-yellow' : 'text-mg-blue hover:text-mg-yellow'}`}
+              >
+                {link.name}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="mt-auto">
@@ -155,4 +164,3 @@ function Header() {
 }
 
 export default Header;
-

@@ -41,6 +41,7 @@ const FeatureCard = ({ icon: Icon, title, description, delay = 0 }) => {
             </p>
 
             <Button
+                href="/services"
                 bgColor="bg-mg-yellow/10"
                 hoverColor="bg-mg-yellow"
                 className="mt-auto text-mg-yellow! hover:text-mg-blue! px-6! py-2! rounded-full! shadow-none hover:shadow-md"

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from './Button';
 import { FaArrowRight } from "react-icons/fa";
 
-const ServiceCard = ({ icon: Icon, title, description, btnText }) => {
+const ServiceCard = ({ icon: Icon, title, description, btnText, href = "/services" }) => {
     return (
         <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col gap-y-6 items-center text-center transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl group w-full ">
             {/* Icon Container with Shape */}
@@ -15,9 +15,7 @@ const ServiceCard = ({ icon: Icon, title, description, btnText }) => {
                     </svg>
                 </div>
                 {/* Icon */}
-
                 {Icon && <Icon className="text-3xl text-mg-yellow z-10" />}
-
             </div>
 
             {/* Content */}
@@ -32,16 +30,14 @@ const ServiceCard = ({ icon: Icon, title, description, btnText }) => {
 
             {/* Button */}
             <div className="mt-auto pt-4">
-                {/* Using the reusable Button with a different background style */}
                 <Button
+                    href={href}
                     bgColor="bg-blue-50"
                     className="px-6! py-2.5! text-sm! text-mg-blue! hover:text-mg-offwhite!"
                 >
                     {btnText} <FaArrowRight />
                 </Button>
             </div>
-
-            {/* Decorative shape behind (optional, based on design) */}
         </div>
     );
 };
@@ -51,7 +47,7 @@ ServiceCard.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     btnText: PropTypes.string.isRequired,
-    shapeImg: PropTypes.string,
+    href: PropTypes.string,
 };
 
 export default ServiceCard;

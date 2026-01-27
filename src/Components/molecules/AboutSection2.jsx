@@ -71,7 +71,7 @@ const AboutSection2 = () => {
                     className="flex flex-col gap-y-8"
                 >
                     <SectionHeader
-                        className="!items-start !text-left !px-0 !max-w-none"
+                        className="items-start! text-left! px-0! max-w-none!"
                         subtitle="TOP OF TECHNOLOGY"
                         title="Cloud Services for Seamless Data Management"
                         description="We successfully cope with tasks of varying complexity provide area longerty guarantees and regularly master. We successfully cope varying complexity provide area longerty guarantees."
@@ -157,9 +157,10 @@ const AboutSection2 = () => {
                         transition={{ delay: 0.6 }}
                     >
                         <Button
+                            href="/contact"
                             bgColor="bg-mg-blue"
                             hoverColor="bg-mg-yellow"
-                            className="!text-white hover:!text-mg-blue transition-all"
+                            className="text-white! hover:text-mg-blue! transition-all"
                         >
                             CONTACT WITH US <FaArrowRight />
                         </Button>

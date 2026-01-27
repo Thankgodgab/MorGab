@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { FaFacebookF, FaTwitter, FaInstagram, FaPinterestP, FaYoutube, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaChevronUp } from 'react-icons/fa';
 import Button from '../organisms/Button';
 import { motion } from 'motion/react';
@@ -80,9 +79,9 @@ const Footer = () => {
           >
             {/* Column 1: Logo & Info */}
             <motion.div variants={itemVariants} className="space-y-6">
-              <Link to="/" className="inline-block">
+              <a href="/" className="inline-block">
                 <img src={logoLight} alt="APexa Logo" className="h-10 w-auto" />
-              </Link>
+              </a>
               <div className="space-y-4 text-gray-400">
                 <div className="flex items-center gap-3 group">
                   <span className="text-mg-yellow group-hover:scale-110 transition-transform"><FaPhoneAlt /></span>
@@ -123,12 +122,19 @@ const Footer = () => {
                 <span className="absolute -bottom-2 left-0 w-12 h-1 bg-mg-yellow"></span>
               </h4>
               <ul className="space-y-4 text-gray-400">
-                {['Information', 'About us', 'Meet our team', 'Case stories', 'Latest news', 'Contact us'].map((item) => (
-                  <li key={item}>
-                    <Link to="#" className="hover:text-mg-yellow transition-colors flex items-center gap-2 group">
+                {[
+                  { name: 'Information', path: '#' },
+                  { name: 'About us', path: '/about' },
+                  { name: 'Meet our team', path: '/team' },
+                  { name: 'Case stories', path: '#' },
+                  { name: 'Latest news', path: '#' },
+                  { name: 'Contact us', path: '/contact' }
+                ].map((item) => (
+                  <li key={item.name}>
+                    <a href={item.path} className="hover:text-mg-yellow transition-colors flex items-center gap-2 group">
                       <span className="w-0 group-hover:w-2 h-[2px] bg-mg-yellow transition-all duration-300"></span>
-                      {item}
-                    </Link>
+                      {item.name}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -143,10 +149,10 @@ const Footer = () => {
               <ul className="space-y-4 text-gray-400">
                 {["How it's Work", 'Partners', 'Testimonials', 'Case Studies', 'Pricing'].map((item) => (
                   <li key={item}>
-                    <Link to="#" className="hover:text-mg-yellow transition-colors flex items-center gap-2 group">
+                    <a href="#" className="hover:text-mg-yellow transition-colors flex items-center gap-2 group">
                       <span className="w-0 group-hover:w-2 h-[2px] bg-mg-yellow transition-all duration-300"></span>
                       {item}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -168,7 +174,7 @@ const Footer = () => {
                     <img
                       src={post.img}
                       alt={`Instagram post ${post.id}`}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110"
+                      className="w-full h-full object-cover lg:grayscale lg:group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-mg-yellow/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </a>
@@ -189,14 +195,16 @@ const Footer = () => {
               <div className="flex flex-col md:flex-row items-center gap-8 w-full">
                 <h3 className="text-2xl md:text-3xl font-bold whitespace-nowrap">Subscribe Newsletter</h3>
                 <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
-                  <input
-                    type="email"
-                    placeholder="E-Mail Type . . ."
-                    className="w-full py-4 px-8 rounded-full bg-white text-mg-blue outline-none placeholder:text-gray-400 h-[56px] focus:ring-2 focus:ring-mg-yellow transition-all"
-                  />
-                  <Button className="h-[56px] py-4 px-10 rounded-full text-base uppercase whitespace-nowrap bg-mg-yellow! text-mg-blue! hover:text-mg-offwhite! shadow-none hover:shadow-xl w-full sm:w-auto">
-                    Subscribe
-                  </Button>
+                  <form className="flex flex-col sm:flex-row items-center gap-4 w-full" onSubmit={(e) => e.preventDefault()}>
+                    <input
+                      type="email"
+                      placeholder="E-Mail Type . . ."
+                      className="w-full py-4 px-8 rounded-full bg-white text-mg-blue outline-none placeholder:text-gray-400 h-[56px] focus:ring-2 focus:ring-mg-yellow transition-all"
+                    />
+                    <Button type="submit" className="h-[56px] py-4 px-10 rounded-full text-base uppercase whitespace-nowrap bg-mg-yellow! text-mg-blue! hover:text-mg-offwhite! shadow-none hover:shadow-xl w-full sm:w-auto">
+                      Subscribe
+                    </Button>
+                  </form>
                 </div>
               </div>
               <div className="w-full lg:w-auto">
@@ -224,4 +232,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

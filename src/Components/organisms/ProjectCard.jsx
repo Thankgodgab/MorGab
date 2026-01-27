@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaArrowRight } from "react-icons/fa";
-import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ image, title, category, link = "#" }) => {
     return (
@@ -26,12 +25,12 @@ const ProjectCard = ({ image, title, category, link = "#" }) => {
                 </div>
 
                 {/* Arrow Button */}
-                <Link
-                    to={link}
+                <a
+                    href={link}
                     className="w-12 h-12 rounded-full bg-mg-blue flex items-center justify-center text-white transform translate-y-20 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:bg-mg-yellow hover:text-mg-blue! shadow-lg"
                 >
                     <FaArrowRight />
-                </Link>
+                </a>
             </div>
         </div>
     );

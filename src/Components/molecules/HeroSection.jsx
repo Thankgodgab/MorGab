@@ -119,7 +119,7 @@ function HeroSection() {
             variants={itemVariants}
             className="flex justify-center lg:justify-start"
           >
-            <Button>
+            <Button href="/contact">
               GET STARTED <FaArrowRight />
             </Button>
           </motion.div>

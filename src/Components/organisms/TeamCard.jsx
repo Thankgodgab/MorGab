@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { FaShareAlt, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaTimes } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 
 const TeamCard = ({ name, role, image, portfolioLink, socialLinks }) => {
     const [isSocialOpen, setIsSocialOpen] = useState(false);
@@ -47,12 +46,12 @@ const TeamCard = ({ name, role, image, portfolioLink, socialLinks }) => {
 
             {/* Content Section */}
             <div className="p-8 text-left bg-white relative z-10">
-                <Link
-                    to={portfolioLink || "#"}
+                <a
+                    href={portfolioLink || "#"}
                     className="block text-2xl font-bold text-mg-blue hover:text-mg-yellow transition-colors duration-300 mb-1"
                 >
                     {name}
-                </Link>
+                </a>
                 <p className="text-mg-yellow font-medium text-sm">
                     {role}
                 </p>

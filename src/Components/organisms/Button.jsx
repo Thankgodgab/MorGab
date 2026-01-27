@@ -1,18 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ children, className = "", onClick, bgColor = "bg-mg-yellow", hoverColor = "bg-mg-blue", ...props }) => {
+const Button = ({ children, className = "", onClick, bgColor = "bg-mg-yellow", hoverColor = "bg-mg-blue", href, ...props }) => {
+    const Component = href ? 'a' : 'button';
+
     return (
-        <button
+        <Component
+            href={href}
             onClick={onClick}
-            className={`text-mg-blue hover:text-mg-offwhite px-7 py-3 ${bgColor} relative overflow-hidden group/btn hover:bg-none transition-colors duration-500 rounded-lg shadow-md hover:shadow-lg cursor-pointer ${className}`}
+            className={`text-mg-blue hover:text-mg-offwhite px-7 py-3 ${bgColor} relative overflow-hidden group/btn transition-colors duration-500 rounded-lg shadow-md hover:shadow-lg cursor-pointer flex items-center justify-center font-bold text-base ${className}`}
             {...props}
         >
             <span className={`absolute left-0 bottom-0 w-full h-full ${hoverColor} translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 z-0`}></span>
-            <span className='font-bold text-base relative z-10 flex items-center gap-2'>
+            <span className='relative z-10 flex items-center gap-2'>
                 {children}
             </span>
-        </button>
+        </Component>
     );
 };
 
@@ -22,6 +25,7 @@ Button.propTypes = {
     onClick: PropTypes.func,
     bgColor: PropTypes.string,
     hoverColor: PropTypes.string,
+    href: PropTypes.string,
 };
 
 export default Button;
