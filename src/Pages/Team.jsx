@@ -1,8 +1,11 @@
 import React from 'react'
+import TeamSection from '../Components/organisms/TeamSection'
 
 function Team() {
   return (
-    <div>Team</div>
+    <>
+      <TeamSection />
+    </>
   )
 }
 
