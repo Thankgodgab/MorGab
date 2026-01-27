@@ -1,10 +1,10 @@
 import React from 'react'
-import TeamSection from '../Components/organisms/TeamSection'
+import TeamSectionFull from '../Components/organisms/TeamSectionFull'
 
 function Team() {
   return (
     <>
-      <TeamSection />
+      <TeamSectionFull />
     </>
   )
 }

@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { FaFacebookF, FaTwitter, FaInstagram, FaPinterestP, FaYoutube, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaChevronUp } from 'react-icons/fa';
-import Button from '../organisms/Button';
+import {
+  FaFacebookF, FaTwitter, FaInstagram, FaPinterestP, FaYoutube,
+  FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaChevronUp
+} from 'react-icons/fa';
+import Button from '../atoms/Button';
 import { motion } from 'motion/react';
+import { footerContent, contactInfo, navigation } from '../../data/content';
 
-// Import Assets
-import logoLight from '../../assets/LogoLight-L.png';
-import footerShape from '../../assets/h4_footer_shape.png';
-import insta01 from '../../assets/footer_insta01.jpg';
-import insta02 from '../../assets/footer_insta02.jpg';
-import insta03 from '../../assets/footer_insta03.jpg';
-import insta04 from '../../assets/footer_insta04.jpg';
-import insta05 from '../../assets/footer_insta05.jpg';
-import insta06 from '../../assets/footer_insta06.jpg';
+const iconMap = {
+  FaFacebookF: <FaFacebookF />,
+  FaTwitter: <FaTwitter />,
+  FaInstagram: <FaInstagram />,
+  FaPinterestP: <FaPinterestP />,
+  FaYoutube: <FaYoutube />
+};
 
 const Footer = () => {
   const [showScroll, setShowScroll] = useState(false);
@@ -28,15 +30,6 @@ const Footer = () => {
     window.addEventListener('scroll', checkScrollTop);
     return () => window.removeEventListener('scroll', checkScrollTop);
   }, []);
-
-  const instagramPosts = [
-    { id: 1, img: insta01, link: "https://www.instagram.com/p/1" },
-    { id: 2, img: insta02, link: "https://www.instagram.com/p/2" },
-    { id: 3, img: insta03, link: "https://www.instagram.com/p/3" },
-    { id: 4, img: insta04, link: "https://www.instagram.com/p/4" },
-    { id: 5, img: insta05, link: "https://www.instagram.com/p/5" },
-    { id: 6, img: insta06, link: "https://www.instagram.com/p/6" },
-  ];
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -64,11 +57,6 @@ const Footer = () => {
   return (
     <>
       <footer className="bg-[#0b0f1a] text-mg-offwhite pt-20 pb-10 font-secondary relative overflow-hidden">
-        {/* Background Shape */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-          <img src={footerShape} alt="" className="w-full h-full object-cover" />
-        </div>
-
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             variants={containerVariants}
@@ -80,36 +68,30 @@ const Footer = () => {
             {/* Column 1: Logo & Info */}
             <motion.div variants={itemVariants} className="space-y-6">
               <a href="/" className="inline-block">
-                <img src={logoLight} alt="APexa Logo" className="h-10 w-auto" />
+                <img src={navigation.logo.light} alt={navigation.logo.alt} className="h-10 w-auto" />
               </a>
               <div className="space-y-4 text-gray-400">
                 <div className="flex items-center gap-3 group">
                   <span className="text-mg-yellow group-hover:scale-110 transition-transform"><FaPhoneAlt /></span>
-                  <a href="tel:+1238889999" className="hover:text-mg-yellow transition-colors">+123 888 9999</a>
+                  <a href={`tel:${contactInfo.phone}`} className="hover:text-mg-yellow transition-colors">{contactInfo.phone}</a>
                 </div>
                 <div className="flex items-center gap-3 group">
                   <span className="text-mg-yellow group-hover:scale-110 transition-transform"><FaEnvelope /></span>
-                  <a href="mailto:info@apexa.com" className="hover:text-mg-yellow transition-colors">info@apexa.com</a>
+                  <a href={`mailto:${contactInfo.email}`} className="hover:text-mg-yellow transition-colors">{contactInfo.email}</a>
                 </div>
                 <div className="flex items-start gap-3 group">
                   <span className="text-mg-yellow mt-1 group-hover:scale-110 transition-transform"><FaMapMarkerAlt /></span>
-                  <p className="leading-relaxed">Sydney Harbour Bridge Circular City of Sydney, Australia.</p>
+                  <p className="leading-relaxed">{contactInfo.address}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 pt-2">
-                {[
-                  { icon: <FaFacebookF />, link: "#" },
-                  { icon: <FaTwitter />, link: "#" },
-                  { icon: <FaInstagram />, link: "#" },
-                  { icon: <FaPinterestP />, link: "#" },
-                  { icon: <FaYoutube />, link: "#" },
-                ].map((social, idx) => (
+                {contactInfo.socials.map((social, idx) => (
                   <a
                     key={idx}
                     href={social.link}
                     className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 bg-gray-800 text-mg-offwhite hover:bg-mg-yellow hover:text-mg-blue"
                   >
-                    {social.icon}
+                    {iconMap[social.icon]}
                   </a>
                 ))}
               </div>
@@ -122,14 +104,7 @@ const Footer = () => {
                 <span className="absolute -bottom-2 left-0 w-12 h-1 bg-mg-yellow"></span>
               </h4>
               <ul className="space-y-4 text-gray-400">
-                {[
-                  { name: 'Information', path: '#' },
-                  { name: 'About us', path: '/about' },
-                  { name: 'Meet our team', path: '/team' },
-                  { name: 'Case stories', path: '#' },
-                  { name: 'Latest news', path: '#' },
-                  { name: 'Contact us', path: '/contact' }
-                ].map((item) => (
+                {footerContent.infoLinks.map((item) => (
                   <li key={item.name}>
                     <a href={item.path} className="hover:text-mg-yellow transition-colors flex items-center gap-2 group">
                       <span className="w-0 group-hover:w-2 h-[2px] bg-mg-yellow transition-all duration-300"></span>
@@ -147,11 +122,11 @@ const Footer = () => {
                 <span className="absolute -bottom-2 left-0 w-12 h-1 bg-mg-yellow"></span>
               </h4>
               <ul className="space-y-4 text-gray-400">
-                {["How it's Work", 'Partners', 'Testimonials', 'Case Studies', 'Pricing'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="hover:text-mg-yellow transition-colors flex items-center gap-2 group">
+                {footerContent.topLinks.map((item) => (
+                  <li key={item.name}>
+                    <a href={item.path} className="hover:text-mg-yellow transition-colors flex items-center gap-2 group">
                       <span className="w-0 group-hover:w-2 h-[2px] bg-mg-yellow transition-all duration-300"></span>
-                      {item}
+                      {item.name}
                     </a>
                   </li>
                 ))}
@@ -165,7 +140,7 @@ const Footer = () => {
                 <span className="absolute -bottom-2 left-0 w-12 h-1 bg-mg-yellow"></span>
               </h4>
               <div className="grid grid-cols-3 gap-3">
-                {instagramPosts.map((post) => (
+                {footerContent.instagramPosts.map((post) => (
                   <a
                     key={post.id}
                     href={post.link}
@@ -193,23 +168,23 @@ const Footer = () => {
           >
             <div className="flex flex-col lg:flex-row items-center justify-between gap-10 mb-10">
               <div className="flex flex-col md:flex-row items-center gap-8 w-full">
-                <h3 className="text-2xl md:text-3xl font-bold whitespace-nowrap">Subscribe Newsletter</h3>
+                <h3 className="text-2xl md:text-3xl font-bold whitespace-nowrap">{footerContent.newsletter.title}</h3>
                 <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
                   <form className="flex flex-col sm:flex-row items-center gap-4 w-full" onSubmit={(e) => e.preventDefault()}>
                     <input
                       type="email"
-                      placeholder="E-Mail Type . . ."
+                      placeholder={footerContent.newsletter.placeholder}
                       className="w-full py-4 px-8 rounded-full bg-white text-mg-blue outline-none placeholder:text-gray-400 h-[56px] focus:ring-2 focus:ring-mg-yellow transition-all"
                     />
                     <Button type="submit" className="h-[56px] py-4 px-10 rounded-full text-base uppercase whitespace-nowrap bg-mg-yellow! text-mg-blue! hover:text-mg-offwhite! shadow-none hover:shadow-xl w-full sm:w-auto">
-                      Subscribe
+                      {footerContent.newsletter.buttonText}
                     </Button>
                   </form>
                 </div>
               </div>
               <div className="w-full lg:w-auto">
                 <p className="text-gray-400 text-sm md:whitespace-nowrap text-center lg:text-left">
-                  Copyright © 2024 Apexa | All Right Reserved
+                  {footerContent.copyright}
                 </p>
               </div>
             </div>

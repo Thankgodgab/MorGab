@@ -1,28 +1,29 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
-import ContactForm from './ContactForm';
+import ContactForm from '../molecules/ContactForm';
+import { contactInfo as storeContactInfo } from '../../data/content';
 
 const ContactSection = () => {
-    const contactInfo = [
+    const infoItems = [
         {
             icon: FaMapMarkerAlt,
             title: "Address",
-            value: "Awamileaug Drive, Kensington London, UK",
+            value: storeContactInfo.address,
             color: "text-blue-500",
             bgColor: "bg-blue-50"
         },
         {
             icon: FaPhoneAlt,
             title: "Phone",
-            value: "+48 500-130-0001",
+            value: storeContactInfo.phone,
             color: "text-purple-500",
             bgColor: "bg-purple-50"
         },
         {
             icon: FaEnvelope,
             title: "E-mail",
-            value: "info@gmail.com",
+            value: storeContactInfo.email,
             color: "text-sky-500",
             bgColor: "bg-sky-50"
         }
@@ -54,7 +55,7 @@ const ContactSection = () => {
                         </motion.p>
 
                         <div className="space-y-8">
-                            {contactInfo.map((info, index) => (
+                            {infoItems.map((info, index) => (
                                 <motion.div
                                     key={index}
                                     initial={{ opacity: 0, x: -20 }}

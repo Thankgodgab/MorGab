@@ -1,66 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import TestimonialCard from '../organisms/TestimonialCard';
+import TestimonialCard from '../molecules/TestimonialCard';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import { motion, AnimatePresence } from 'motion/react';
-
-// Import Assets (using team images as placeholders for avatars)
+import { motion } from 'motion/react';
 import avatar01 from '../../assets/team_img01.jpg';
 import avatar02 from '../../assets/team_img02.jpg';
 import avatar03 from '../../assets/team_img03.jpg';
 import avatar04 from '../../assets/team_img04.jpg';
-import quoteIcon from '../../assets/quote02.svg';
 
-const Testimonies = () => {
+const TestimonialSection = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
 
     const testimonials = [
         {
-            id: 1,
-            author: "Jone Cooper",
-            role: "CEO, Apexa Agency",
-            image: avatar01,
-            rating: 5,
+            id: 1, author: "Jone Cooper", role: "CEO, Apexa Agency", image: avatar01, rating: 5,
             text: "Morem ipsum dolor sit amet, consectetur adipisc Service awing elita florai sum dolor sit amet, consectetura area recall edBorem satisfied clients have to say ipsum dolor sit amet, consectetur."
         },
         {
-            id: 2,
-            author: "Eleanor Pena",
-            role: "CEO, Ketto Agency",
-            image: avatar02,
-            rating: 5,
+            id: 2, author: "Eleanor Pena", role: "CEO, Ketto Agency", image: avatar02, rating: 5,
             text: "Morem ipsum dolor sit amet, consectetur adipisc Service awing elita florai sum dolor sit amet, consectetura area recall edBorem satisfied clients have to say ipsum dolor sit amet, consectetur."
         },
         {
-            id: 3,
-            author: "Floyd Miles",
-            role: "CEO, Miles Marketing",
-            image: avatar03,
-            rating: 4,
+            id: 3, author: "Floyd Miles", role: "CEO, Miles Marketing", image: avatar03, rating: 4,
             text: "Business consultancy were able to provide us with the best solutions for our marketing campaigns. Their team is highly professional and result-oriented."
         },
         {
-            id: 4,
-            author: "Ralph Edwards",
-            role: "CTO, Tech Solutions",
-            image: avatar04,
-            rating: 5,
+            id: 4, author: "Ralph Edwards", role: "CTO, Tech Solutions", image: avatar04, rating: 5,
             text: "The financial strategies implemented by the team helped us scale our operations efficiently. I highly recommend their expertise to any growing business."
         },
         {
-            id: 5,
-            author: "Bessie Cooper",
-            role: "Manager, Fine Art",
-            image: avatar01,
-            rating: 5,
+            id: 5, author: "Bessie Cooper", role: "Manager, Fine Art", image: avatar01, rating: 5,
             text: "A truly transformative experience. The level of detail and commitment to our project's success was outstanding from start to finish."
         },
         {
-            id: 6,
-            author: "Guy Hawkins",
-            role: "Founder, Growth Lab",
-            image: avatar02,
-            rating: 5,
+            id: 6, author: "Guy Hawkins", role: "Founder, Growth Lab", image: avatar02, rating: 5,
             text: "The insights provided were invaluable. We've seen a significant increase in our ROI since we started following their expert advice."
         }
     ];
@@ -77,7 +50,7 @@ const Testimonies = () => {
         if (currentIndex < testimonials.length - step) {
             setCurrentIndex(prev => prev + 1);
         } else {
-            setCurrentIndex(0); // Loop back
+            setCurrentIndex(0);
         }
     };
 
@@ -86,12 +59,12 @@ const Testimonies = () => {
             setCurrentIndex(prev => prev - 1);
         } else {
             const step = isMobile ? 1 : 2;
-            setCurrentIndex(testimonials.length - step); // Go to end
+            setCurrentIndex(testimonials.length - step);
         }
     };
 
     return (
-        <section className="py-24 bg-[#f9fafb] font-secondary overflow-hidden">
+        <section className="py-24 bg-mg-offwhite font-secondary overflow-hidden">
             <div className="container mx-auto px-4">
                 {/* Header Section */}
                 <motion.div
@@ -155,4 +128,4 @@ const Testimonies = () => {
     );
 };
 
-export default Testimonies;
+export default TestimonialSection;

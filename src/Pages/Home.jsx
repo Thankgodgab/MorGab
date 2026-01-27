@@ -1,14 +1,14 @@
 import React from 'react'
-import HeroSection from '../Components/molecules/HeroSection'
-import PartnerSection from '../Components/molecules/PartnerSection'
-import WhatWeOffer from '../Components/molecules/WhatWeOffer'
-import AboutSection from '../Components/molecules/AboutSection'
-import WhyChooseUs from '../Components/molecules/WhyChooseUs'
-import ServiceTicker from '../Components/molecules/ServiceTicker'
-import Project from '../Components/molecules/Project'
-import TeamSection from '../Components/molecules/TeamSection'
-import Testimonies from '../Components/molecules/Testimonies'
-import ContactSection from '../Components/molecules/ContactSection'
+import HeroSection from '../Components/organisms/HeroSection'
+import PartnerSection from '../Components/organisms/PartnerSection'
+import WhatWeOffer from '../Components/organisms/OfferSection'
+import AboutSection from '../Components/organisms/AboutSection'
+import WhyChooseUs from '../Components/organisms/WhyChooseUs'
+import ServiceTicker from '../Components/organisms/ServiceTicker'
+import ProjectSection from '../Components/organisms/ProjectSection'
+import TeamSectionHome from '../Components/organisms/TeamSectionHome'
+import TestimonialSection from '../Components/organisms/TestimonialSection'
+import ContactSection from '../Components/organisms/ContactSection'
 
 function Home() {
   return (
@@ -28,19 +28,17 @@ function Home() {
         <ServiceTicker />
       </section>
       <section id="projects">
-        <Project />
+        <ProjectSection />
       </section>
       <section id="team">
-        <TeamSection />
+        <TeamSectionHome />
       </section>
       <section id="testimonies">
-        <Testimonies />
+        <TestimonialSection />
       </section>
       <ContactSection />
     </>
   )
 }
-
-
 
 export default Home

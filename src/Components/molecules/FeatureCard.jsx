@@ -1,9 +1,10 @@
 import { motion } from 'motion/react';
 import { FaArrowRight } from 'react-icons/fa';
 import PropTypes from 'prop-types';
-import Button from '../organisms/Button';
+import Button from '../atoms/Button';
 
-const FeatureCard = ({ icon: Icon, title, description, delay = 0 }) => {
+const FeatureCard = (props) => {
+    const { icon: Icon, title, description, delay = 0 } = props;
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}

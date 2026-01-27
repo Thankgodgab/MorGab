@@ -1,9 +1,9 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { FaArrowRight, FaStar } from 'react-icons/fa';
 import { FaArrowRightLong } from 'react-icons/fa6';
-import SectionHeader from '../organisms/SectionHeader';
-import Button from '../organisms/Button';
+import SectionHeader from '../atoms/SectionHeader';
+import Button from '../atoms/Button';
 
 // Assets
 import imgCloud from '../../assets/img-cloud.png';

@@ -1,46 +1,12 @@
 import React from 'react';
-import ProjectCard from '../organisms/ProjectCard';
-import CounterSection from '../organisms/CounterSection';
+import ProjectCard from '../molecules/ProjectCard';
+import CounterSection from './CounterSection';
 import { motion } from 'motion/react';
+import { projectsContent } from '../../data/content';
 
-// Images
-import img1 from '../../assets/project01.jpg';
-import img2 from '../../assets/project02.jpg';
-import img3 from '../../assets/project04.jpg'; // Using 04 as third
-import img4 from '../../assets/project05.jpg'; // Using 05 as fourth
+function ProjectSection() {
+  const { projects } = projectsContent;
 
-const projects = [
-  {
-    id: 1,
-    title: "Business Consulting",
-    category: "Business Strategy",
-    image: img1,
-    link: "/project-details"
-  },
-  {
-    id: 2,
-    title: "Digital Agency",
-    category: "Business Services",
-    image: img2,
-    link: "/project-details"
-  },
-  {
-    id: 3,
-    title: "Business Accounting",
-    category: "Financing Management",
-    image: img3,
-    link: "/project-details"
-  },
-  {
-    id: 4,
-    title: "Marketing Idea",
-    category: "Modern Strategy",
-    image: img4,
-    link: "/project-details"
-  }
-];
-
-function Project() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -88,4 +54,4 @@ function Project() {
   );
 }
 
-export default Project;
+export default ProjectSection;

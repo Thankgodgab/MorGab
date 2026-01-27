@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button';
+import Button from '../atoms/Button';
 import { FaArrowRight } from "react-icons/fa";
 
 const ServiceCard = ({ icon: Icon, title, description, btnText, href = "/services" }) => {

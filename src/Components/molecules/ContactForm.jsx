@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from '../organisms/Button';
+import Button from '../atoms/Button';
 import { motion, AnimatePresence } from 'motion/react';
 
 const ContactForm = () => {
@@ -60,7 +60,7 @@ const ContactForm = () => {
             await new Promise(resolve => setTimeout(resolve, 2000));
             setSubmitStatus('success');
             setFormData({ message: '', name: '', email: '', phone: '', saveInfo: false });
-        } catch (error) {
+        } catch {
             setSubmitStatus('error');
         } finally {
             setIsSubmitting(false);

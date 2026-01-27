@@ -1,14 +1,14 @@
 import React from 'react';
-import SectionHeader from '../organisms/SectionHeader';
-import Button from '../organisms/Button';
+import SectionHeader from '../atoms/SectionHeader';
+import Button from '../atoms/Button';
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { BsTrophy } from "react-icons/bs";
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 // Images
-import aboutImg from '../../assets/h5_choose_img01.jpg'; // Using the smiling woman image
-import shape1 from '../../assets/h5_about_shape.png'; // Squiggly line?
+import aboutImg from '../../assets/h5_choose_img01.jpg';
+import shape1 from '../../assets/h5_about_shape.png';
 
 const AboutSection = () => {
     return (
@@ -24,7 +24,7 @@ const AboutSection = () => {
                     className="flex flex-col gap-y-8 order-2 lg:order-1"
                 >
                     <SectionHeader
-                        className="!items-start !text-left !px-0 !max-w-none"
+                        className="items-start! text-left! px-0! max-w-none!"
                         subtitle="ABOUT COMPANY"
                         title={
                             <>
@@ -131,7 +131,8 @@ const AboutSection = () => {
                         <Button
                             bgColor="bg-mg-blue"
                             hoverColor="bg-mg-yellow"
-                            className="!text-white hover:text-mg-blue!"
+                            className="text-white! hover:text-mg-blue!"
+                            href="/contact"
                         >
                             CONTACT WITH US <FaArrowRight />
                         </Button>
@@ -156,7 +157,7 @@ const AboutSection = () => {
                             whileInView={{ y: 0, opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.4 }}
-                            className="absolute top-1/2 -left-12 -translate-y-1/2 bg-white p-6 rounded-2xl shadow-2xl flex flex-col items-center justify-center gap-2 text-center border border-gray-50 max-w-[140px] hidden md:flex"
+                            className="absolute top-1/2 -left-12 -translate-y-1/2 bg-white p-6 rounded-2xl shadow-2xl items-center justify-center gap-2 text-center border border-gray-50 max-w-[140px] hidden md:flex md:flex-col"
                         >
                             <div className="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center text-orange-400 text-3xl mb-2">
                                 <BsTrophy />

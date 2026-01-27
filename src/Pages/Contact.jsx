@@ -1,11 +1,9 @@
 import React from 'react'
-import ContactSection from '../Components/molecules/ContactSection'
+import ContactSection from '../Components/organisms/ContactSection'
 
 function Contact() {
   return (
     <>
-
-
       {/* Main Contact Section */}
       <ContactSection />
 
@@ -23,8 +21,6 @@ function Contact() {
           className="grayscale hover:grayscale-0 transition-all duration-700 ease-in-out"
         ></iframe>
       </section>
-
-
     </>
   )
 }

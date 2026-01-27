@@ -1,11 +1,11 @@
-import Header from './Components/molecules/Header'
-import Preloader from './Components/molecules/Preloader'
+import Header from './Components/layout/Header'
+import Preloader from './Components/layout/Preloader'
 import Home from './Pages/Home'
 import About from './Pages/About'
 import Services from './Pages/Services'
 import Team from './Pages/Team'
 import Contact from './Pages/Contact'
-import Footer from './Components/molecules/Footer'
+import Footer from './Components/layout/Footer'
 import { Route, Routes } from 'react-router-dom'
 
 function App() {

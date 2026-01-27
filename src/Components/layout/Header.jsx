@@ -1,16 +1,8 @@
 import { useState, useEffect } from 'react'
-import logo from '../../assets/LogoDark-L.png'
+import { navigation, contactInfo } from '../../data/content'
 import { HiMenuAlt3 } from "react-icons/hi";
 import { RxCross2 } from "react-icons/rx";
 import { motion } from 'motion/react';
-
-const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "About Us", path: "/about" },
-  { name: "Services", path: "/services" },
-  { name: "Team", path: "/team" },
-  { name: "Contact", path: "/contact" },
-]
 
 // Components declared outside of the main Header component to avoid re-creation on every render
 const NavItems = () => {
@@ -18,7 +10,7 @@ const NavItems = () => {
 
   return (
     <nav className="hidden lg:flex items-center gap-x-8 lg:gap-x-12">
-      {navLinks.map((link, index) => {
+      {navigation.links.map((link, index) => {
         const isActive = currentPath === link.path || (link.path !== '/' && currentPath.startsWith(link.path));
 
         return (
@@ -49,10 +41,13 @@ const ActionButtons = ({ setIsOpen }) => (
       transition={{ duration: 0.5, delay: 0.6 }}
       className="hidden md:flex items-center gap-x-4"
     >
-      <button className="text-mg-blue hover:text-mg-offwhite px-7 py-3 bg-mg-yellow relative overflow-hidden group hover:bg-none transition-colors duration-500 rounded-lg shadow-md hover:shadow-lg cursor-pointer">
+      <a
+        href={navigation.actionButton.path}
+        className="text-mg-blue hover:text-mg-offwhite px-7 py-3 bg-mg-yellow relative overflow-hidden group hover:bg-none transition-colors duration-500 rounded-lg shadow-md hover:shadow-lg cursor-pointer"
+      >
         <span className="absolute left-0 bottom-0 w-full h-full bg-mg-blue translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-0"></span>
-        <span className='font-bold text-base relative z-10 uppercase'>LET'S TALK</span>
-      </button>
+        <span className='font-bold text-base relative z-10 uppercase'>{navigation.actionButton.text}</span>
+      </a>
     </motion.div>
     <div className="lg:hidden">
       <button onClick={() => setIsOpen(true)} className="text-3xl text-mg-blue cursor-pointer focus:outline-none">
@@ -92,12 +87,12 @@ function Header() {
         <div className="flex justify-between items-center w-full px-5 md:px-10 lg:px-20">
           <div className="h-full">
             <a href="/">
-              <img src={logo} alt="Company Logo" className='w-36 md:w-40 object-contain' />
+              <img src={navigation.logo.dark} alt={navigation.logo.alt} className='w-36 md:w-40 object-contain' />
             </a>
           </div>
           <NavItems />
           <ActionButtons setIsOpen={setIsOpen} />
-          
+
         </div>
       </motion.header>
 
@@ -109,7 +104,7 @@ function Header() {
         <div className="flex justify-between items-center w-full px-5 md:px-10 lg:px-20 container mx-auto">
           <div className="h-full">
             <a href="/">
-              <img src={logo} alt="Company Logo" className='w-32 md:w-36 object-contain' />
+              <img src={navigation.logo.dark} alt={navigation.logo.alt} className='w-32 md:w-36 object-contain' />
             </a>
           </div>
           <NavItems />
@@ -127,7 +122,7 @@ function Header() {
       <div className={`fixed top-0 right-0 w-full md:w-[80%] max-w-sm h-full bg-white z-10001 shadow-2xl p-6 flex flex-col gap-y-8 transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex items-center justify-between">
           <a href="/" onClick={() => setIsOpen(false)}>
-            <img src={logo} alt="Company Logo" className='w-32 object-contain' />
+            <img src={navigation.logo.dark} alt={navigation.logo.alt} className='w-32 object-contain' />
           </a>
           <button onClick={() => setIsOpen(false)} className="text-3xl text-mg-blue hover:text-mg-yellow transition-colors focus:outline-none">
             <RxCross2 />
@@ -135,7 +130,7 @@ function Header() {
         </div>
 
         <nav className="flex flex-col gap-y-4">
-          {navLinks.map((link) => {
+          {navigation.links.map((link) => {
             const isActive = currentPath === link.path || (link.path !== '/' && currentPath.startsWith(link.path));
 
             return (
@@ -154,8 +149,8 @@ function Header() {
         <div className="mt-auto">
           <div className="flex flex-col gap-y-2 text-mg-blue font-secondary">
             <p className='font-bold text-lg'>Contact Info</p>
-            <p className="text-sm">info@apexa.com</p>
-            <p className="text-sm">+123 888 9999</p>
+            <p className="text-sm">{contactInfo.email}</p>
+            <p className="text-sm">{contactInfo.phone}</p>
           </div>
         </div>
       </div>
