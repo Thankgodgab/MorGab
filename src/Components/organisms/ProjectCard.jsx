@@ -10,7 +10,7 @@ const ProjectCard = ({ image, title, category, link = "#" }) => {
             <img
                 src={image}
                 alt={title}
-                className="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+                className="w-full h-full object-cover lg:grayscale transition-all duration-500 lg:group-hover:grayscale-0 group-hover:scale-105"
             />
 
             {/* Gradient Overlay (for text readability) */}

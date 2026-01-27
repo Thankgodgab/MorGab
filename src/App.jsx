@@ -1,5 +1,5 @@
-import React from 'react'
 import Header from './Components/molecules/Header'
+import Preloader from './Components/molecules/Preloader'
 import Home from './Pages/Home'
 import About from './Pages/About'
 import Services from './Pages/Services'
@@ -11,6 +11,7 @@ import { Route, Routes } from 'react-router-dom'
 function App() {
     return (
         <div className="w-full min-h-screen bg-mg-offwhite font-primary overflow-x-hidden">
+            <Preloader />
             <Header />
             <main className='relative'>
                 {/* Main content of Each Page goes here */}

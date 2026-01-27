@@ -8,6 +8,7 @@ import ServiceTicker from '../Components/molecules/ServiceTicker'
 import Project from '../Components/molecules/Project'
 import TeamSection from '../Components/molecules/TeamSection'
 import Testimonies from '../Components/molecules/Testimonies'
+import ContactSection from '../Components/molecules/ContactSection'
 
 function Home() {
   return (
@@ -35,6 +36,7 @@ function Home() {
       <section id="testimonies">
         <Testimonies />
       </section>
+      <ContactSection />
     </>
   )
 }

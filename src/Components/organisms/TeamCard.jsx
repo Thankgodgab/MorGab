@@ -15,7 +15,7 @@ const TeamCard = ({ name, role, image, portfolioLink, socialLinks }) => {
                 <img
                     src={image}
                     alt={name}
-                    className="relative z-10 w-full h-auto object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
+                    className="relative z-10 w-full h-auto object-cover lg:grayscale transition-all duration-700 lg:group-hover:grayscale-0 group-hover:scale-105"
                 />
 
                 {/* Social Share Toggle */}
