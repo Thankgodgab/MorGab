@@ -45,9 +45,9 @@ export const navigation = {
 };
 
 export const heroContent = {
-  title: "Agency's Vision For The Next Generation Of Advertising",
+  title: "Building the Next Generation of Digital Experiences",
   subtitle:
-    "Agilos helps you to convert your data into a strategic asset and get business insights.",
+    "MorGab Technologies transforms ideas and data into high-impact digital solutions. We help businesses innovate faster, scale smarter, and stay ahead in an ever-evolving tech world.",
   button: {
     text: "GET STARTED",
     link: "/contact",
@@ -98,56 +98,56 @@ export const projectsContent = {
 
 export const servicesContent = {
   sectionSubtitle: "WHAT WE OFFER",
-  sectionTitle: "We Do World Class Work For You",
+  sectionTitle: "Quality Tech Services Built for Growth",
   sectionDescription:
-    "Mauris ut enim sit amet lacus ornare ullamcorper Praesent plaacerat neque eu purus rhoncus vel tincidunt odio ultrices.",
+    "MorGab Technologies provides professional web and software development services designed to help your business stand out and succeed.",
   services: [
     {
       id: 1,
-      iconName: "FaChartBar",
-      title: "Strategic marketing",
+      iconName: "FaCode",
+      title: "Web Development",
       description:
-        "Beauis utter enim amet lacus ornare ullamcorper Praesent neque purus rhoncus.",
+        "We design and build fast, responsive, and scalable websites and web applications tailored to your business needs using modern technologies.",
       btnText: "READ MORE",
     },
     {
       id: 2,
-      iconName: "FaLightbulb",
-      title: "Insights & analytics",
+      iconName: "FaMobileAlt",
+      title: "Software & App Solutions",
       description:
-        "Beauis utter enim amet lacus ornare ullamcorper Praesent neque purus rhoncus.",
+        "We develop reliable software solutions and mobile applications that solve real problems and improve business efficiency.",
       btnText: "READ MORE",
     },
     {
       id: 3,
-      iconName: "FaSearchDollar",
-      title: "Tax Audit",
+      iconName: "FaFacebookMessenger",
+      title: "Social Media Marketing",
       description:
-        "Beauis utter enim amet lacus ornare ullamcorper Praesent neque purus rhoncus.",
+        "We help businesses build strong online presence and engage with their target audience through strategic social media management and marketing campaigns.",
       btnText: "READ MORE",
     },
     {
       id: 4,
-      iconName: "FaChartLine",
-      title: "Financial Growth",
+      iconName: "FaBullhorn",
+      title: "Branding",
       description:
-        "Beauis utter enim amet lacus ornare ullamcorper Praesent neque purus rhoncus.",
+        "We create compelling brand identities that reflect your business values and resonate with your target audience.",
       btnText: "READ MORE",
     },
     {
       id: 5,
-      iconName: "FaCogs",
-      title: "Business Planning",
+      iconName: "FaPenRuler",
+      title: "UI/UX Design",
       description:
-        "Beauis utter enim amet lacus ornare ullamcorper Praesent neque purus rhoncus.",
+        "We create visually stunning and user-friendly interfaces that enhance user experience and drive business results.",
       btnText: "READ MORE",
     },
     {
       id: 6,
       iconName: "FaRocket",
-      title: "Market Expansion",
+      title: "Graphic Design",
       description:
-        "Beauis utter enim amet lacus ornare ullamcorper Praesent neque purus rhoncus.",
+        "",
       btnText: "READ MORE",
     },
     {
@@ -275,9 +275,9 @@ export const teamContent = {
 };
 
 export const contactInfo = {
-  email: "info@apexa.com",
-  phone: "+123 888 9999",
-  address: "Sydney Harbour Bridge Circular City of Sydney, Australia.",
+  email: "morgab001@gmail.com",
+  phone: "+234 916 349 7296",
+  address: "Port Harcourt, Rivers State Nigeria",
   socials: [
     { name: "Facebook", link: "#", icon: "FaFacebookF" },
     { name: "Twitter", link: "#", icon: "FaTwitter" },
@@ -299,16 +299,13 @@ export const footerContent = {
   infoLinks: [
     { name: "About us", path: "/about" },
     { name: "Meet our team", path: "/team" },
-    { name: "Case stories", path: "#" },
-    { name: "Latest news", path: "#" },
+    { name: "Our Services", path: "/services" },
     { name: "Contact us", path: "/contact" },
   ],
   topLinks: [
     { name: "How it's Work", path: "#" },
     { name: "Partners", path: "#" },
     { name: "Testimonials", path: "#" },
-    { name: "Case Studies", path: "#" },
-    { name: "Pricing", path: "#" },
   ],
   newsletter: {
     title: "Subscribe Newsletter",
