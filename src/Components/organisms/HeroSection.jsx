@@ -38,7 +38,7 @@ function HeroSection() {
   };
 
   return (
-    <div className="relative w-full pt-32 lg:pb-10 px-5 md:px-10 lg:px-25 overflow-hidden bg-mg-offwhite z-0">
+    <div className="relative w-full pt-16 lg:pt-20 lg:pb-10 px-5 md:px-10 lg:px-25 overflow-hidden bg-mg-offwhite z-0">
 
       {/* Background Shapes */}
       {/* Top right squiggly line */}

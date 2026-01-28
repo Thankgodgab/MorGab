@@ -1,9 +1,12 @@
 import React from 'react'
+import BreadcrumbHeader from '../Components/organisms/BreadcrumbHeader'
 import ContactSection from '../Components/organisms/ContactSection'
 
 function Contact() {
   return (
     <>
+      <BreadcrumbHeader title="Contact Us" path={["Contact"]} />
+
       {/* Main Contact Section */}
       <ContactSection />
 

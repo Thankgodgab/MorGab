@@ -82,7 +82,7 @@ function Header() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full py-6 flex items-center justify-center bg-transparent relative z-50"
+        className="relative w-full py-6 flex items-center justify-center bg-transparent z-40"
       >
         <div className="flex justify-between items-center w-full px-5 md:px-10 lg:px-20">
           <div className="h-full">
